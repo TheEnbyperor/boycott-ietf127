@@ -1,0 +1,254 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% block content %}
+    <div class="govuk-width-container">
+        <img src="{% static "main/boycott-ietf-127.svg" %}" alt="" class="logo">
+        <p class="govuk-body-lead">
+            The IETF Administration LLC has decided to continue to hold meetings in the US,
+            in spite of significant threats to the safety of the community in traveling there.
+            As an Internet community we strive to include everyone, holding a
+            meeting in the US is incompatible with our values.
+            We call on the IETF community to refuse to travel to the 127<sup>th</sup> IETF meeting,
+            to be held in San Francisco.
+        </p>
+        <p class="govuk-body-lead govuk-!-text-align-centre">
+            If the bar lets Nazis in, it's a Nazi bar.
+        </p>
+        <div class="govuk-grid-row govuk-!-text-align-centre">
+            <div class="govuk-grid-column-one-third">
+                <p class="govuk-heading-xl">{{ counts.unable_to_travel }}</p>
+                <p class="govuk-body-l">Who cannot travel to the US</p>
+            </div>
+            <div class="govuk-grid-column-one-third">
+                <p class="govuk-heading-xl">{{ counts.unwilling_to_travel }}</p>
+                <p class="govuk-body-l">Who will refuse to travel in solidarity</p>
+            </div>
+            <div class="govuk-grid-column-one-third">
+                <p class="govuk-heading-xl">{{ counts.supporters }}</p>
+                <p class="govuk-body-l">Who otherwise support this initiative</p>
+            </div>
+        </div>
+        <p class="govuk-body">
+            If you are unable to travel to the US, or wish to voice your support for this boycott,
+            fill in the form below.
+        </p>
+        <h2 class="govuk-heading-m">The US is dangerous</h2>
+        <p class="govuk-body">
+            For many, the US was already a country for which it was not safe to travel to.
+            But now, it is an actively hostile state to almost anyone travelling there.
+        </p>
+        <p class="govuk-body">
+            'Surely this won't affect me; I'm white, male, and European?' Think again.
+            Here are the examples we know about of people being detained at the US border,
+            and put into camps:
+        </p>
+        <ul class="govuk-list govuk-list--bullet">
+            <li>A French scientist was deported for holding views critical of the Trump administration.
+                Source: <a href="https://www.theguardian.com/us-news/2025/mar/19/trump-musk-french-scientist-detained"
+                           class="govuk-link">The Guardian</a>.
+            </li>
+            <li>A Welsh backpacker was detained for 19 days. Source:
+                <a href="https://www.bbc.com/news/articles/cly67j35y99o" class="govuk-link">BBC News</a>.
+            </li>
+            <li>A Canadian actor was detained for 2 weeks. Source:
+                <a href="https://www.theguardian.com/us-news/2025/mar/18/canadian-actor-jasmine-mooney-detained-mexico-border"
+                   class="govuk-link">The Guardian</a>.
+            </li>
+            <li>A German engineer with permanent residency in the US (Green Card) is currently being detained. Source:
+                <a href="https://www.theguardian.com/us-news/2025/mar/18/germany-investigates-after-national-with-green-card-arrested-at-us-border"
+                   class="govuk-link">The Guardian</a>.
+            </li>
+            <li>Two German tourists were held for two weeks and nearly two months, respectively. Source:
+                <a href="https://www.dw.com/en/germany-monitoring-us-detentions-of-its-citizens/a-71952116"
+                   class="govuk-link">Deutsche Welle</a>.
+            </li>
+        </ul>
+        <p class="govuk-body">
+            There are undoubtedly more cases we do not know about.
+            These people are being held in utterly inhumane conditions, often without access to appropriate
+            medical care, legal representation, food, nor even a bed. Some have been tortured.
+        </p>
+        <p class="govuk-body">
+            Beyond problems at the border, the current Secretary for Health and Human Services - Robert F. Kennedy Jr. -
+            has said that he will send those with ADHD to concentration camps. Source:
+            <a href="https://futurism.com/neoscope/rfk-jr-adderall-labor-camps" class="govuk-link">Futurism</a>.<br/>
+            Even if attendees get through the border, their safety during the meeting cannot be guaranteed.
+        </p>
+        <h2 class="govuk-heading-m">'We can't just cancel meeting!'</h2>
+        <p class="govuk-body">
+            We can, and we should.
+        </p>
+        <p class="govuk-body">
+            <a href="https://www.rfc-editor.org/rfc/rfc8718.html#RFC8711" class="govuk-link">RFC 8718</a> sets the
+            criteria for the selection of a meeting venue for the IETF meetings. Amongst the <i>core</i> values listed
+            is that of inclusiveness. Specifically, the IETF should:
+        </p>
+        <div class="govuk-inset-text">
+            <p class="govuk-body">
+                Avoid meeting in countries with laws that effectively exclude people on the basis of race, ethnicity,
+                religion, gender, sexual orientation, national origin, citizenship, or gender identity.
+            </p>
+        </div>
+        <p class="govuk-body">
+            Additionally, <a href="https://www.rfc-editor.org/rfc/rfc9137.html" class="govuk-link">RFC 9137</a>
+            sets the conditions on cancelling/relocating IETF meetings. Amongst examples of situations that should
+            trigger a meeting cancellation are:
+        </p>
+        <div class="govuk-inset-text">
+            <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+                <li>War, civil unrest, or a public health crisis could make a meeting unsafe and/or result in widespread
+                    national or corporate travel bans.
+                </li>
+                <li>Changes in visa policies or other unexpected governmental restrictions might make the venue
+                    inaccessible to numerous attendees.
+                </li>
+            </ul>
+        </div>
+        <h2 class="govuk-heading-l">Voice your support</h2>
+        <form action="" method="post">
+            {% csrf_token %}
+            <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                    <h2 class="govuk-fieldset__heading">Who are you?</h2>
+                </legend>
+                <div class="govuk-form-group{% if form.name.errors %} govuk-form-group--error{% endif %}">
+                    <label class="govuk-label" for="name">Name</label>
+                    {% if form.name.errors %}
+                        {% for error in form.name.errors %}
+                            <p class="govuk-error-message">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                    <input class="govuk-input" id="name" name="name" type="text" required {% if form.name.value %}value="{{ form.name.value }}"{% endif %}>
+                </div>
+                <div class="govuk-form-group{% if form.affiliation.errors %} govuk-form-group--error{% endif %}">
+                    <label class="govuk-label" for="affiliation">Affiliation (optional)</label>
+                    {% if form.affiliation.errors %}
+                        {% for error in form.affiliation.errors %}
+                            <p class="govuk-error-message">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                    <input class="govuk-input" id="affiliation" name="affiliation" type="text" {% if form.affiliation.value %}value="{{ form.affiliation.value }}"{% endif %}>
+                </div>
+                <div class="govuk-form-group{% if form.email.errors %} govuk-form-group--error{% endif %}">
+                    <label class="govuk-label" for="email">Email (we'll send a link to verify your signature)</label>
+                    {% if form.email.errors %}
+                        {% for error in form.email.errors %}
+                            <p class="govuk-error-message">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                    <input class="govuk-input" id="email" name="email" type="email" required {% if form.email.value %}value="{{ form.email.value }}"{% endif %}>
+                </div>
+            </fieldset>
+            <div class="govuk-form-group{% if form.situation.errors %} govuk-form-group--error{% endif %}">
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                        <h2 class="govuk-fieldset__heading">What is your situation?</h2>
+                    </legend>
+                    {% if form.situation.errors %}
+                        {% for error in form.situation.errors %}
+                            <p class="govuk-error-message">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                    <div class="govuk-radios" data-module="govuk-radios">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="situation-1" name="situation" type="radio"
+                                   value="unable" {% if form.situation.value == "unable" %}checked{% endif %}>
+                            <label class="govuk-label govuk-radios__label" for="situation-1">
+                                I am unable to travel to the US, or it is not safe for me to travel.
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="situation-2" name="situation" type="radio"
+                                   value="unwilling" {% if form.situation.value == "unwilling" %}checked{% endif %}>
+                            <label class="govuk-label govuk-radios__label" for="situation-2">
+                                I am refusing to travel in solidarity.
+                            </label>
+                        </div>
+                        <div class="govuk-radios__divider">or</div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="situation-3" name="situation" type="radio"
+                                   value="support" {% if form.situation.value == "support" %}checked{% endif %}>
+                            <label class="govuk-label govuk-radios__label" for="situation-3">
+                                I am not a member of the IETF community, but I rely on their work and support this
+                                open letter
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="govuk-form-group{% if form.public.errors %} govuk-form-group--error{% endif %}">
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                        <h2 class="govuk-fieldset__heading">Do you want your name to be public?</h2>
+                    </legend>
+                    {% if form.public.errors %}
+                        {% for error in form.public.errors %}
+                            <p class="govuk-error-message">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                    <div class="govuk-radios" data-module="govuk-radios">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="public-1" name="public" type="radio"
+                                   value="True" {% if form.public.value == "True" %}checked{% endif %}>
+                            <label class="govuk-label govuk-radios__label" for="public-1">
+                                I want my name listed on this site
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="public-2" name="public" type="radio"
+                                   value="False" {% if form.public.value == "False" %}checked{% endif %}>
+                            <label class="govuk-label govuk-radios__label" for="public-2">
+                                I wish to stay anonymous
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Submit
+            </button>
+        </form>
+        <h2 class="govuk-heading-l">Those who wish to be public</h2>
+        <div class="govuk-grid-row govuk-!-text-align-centre">
+            <div class="govuk-grid-column-one-third">
+                <h2 class="govuk-heading-m">Unable to travel</h2>
+                {% for signature in public_signatures.unable_to_travel %}
+                    <div class="govuk-!-text-align-left">
+                        <p class="govuk-body">
+                            <b>{{ signature.name }}</b><br/>
+                            {% if signature.affiliation %}
+                                <span class="govuk-hint">{{ signature.affiliation }}</span>
+                            {% endif %}
+                        </p>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="govuk-grid-column-one-third">
+                <h2 class="govuk-heading-m">Refusing to travel</h2>
+                {% for signature in public_signatures.unwilling_to_travel %}
+                    <div class="govuk-!-text-align-left">
+                        <p class="govuk-body">
+                            <b>{{ signature.name }}</b><br/>
+                            {% if signature.affiliation %}
+                                <span class="govuk-hint">{{ signature.affiliation }}</span>
+                            {% endif %}
+                        </p>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="govuk-grid-column-one-third">
+                <h2 class="govuk-heading-m">Supporters</h2>
+                {% for signature in public_signatures.supporters %}
+                    <div class="govuk-!-text-align-left">
+                        <p class="govuk-body">
+                            <b>{{ signature.name }}</b><br/>
+                            {% if signature.affiliation %}
+                                <span class="govuk-hint">{{ signature.affiliation }}</span>
+                            {% endif %}
+                        </p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

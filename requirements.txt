@@ -1,0 +1,6 @@
+Django
+django-storages
+boto3==1.35.99
+django-cockroachdb
+psycopg2-binary
+gunicorn

@@ -1,0 +1,66 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="53">
+            <item index="0" class="java.lang.String" itemvalue="python-utils" />
+            <item index="1" class="java.lang.String" itemvalue="protobuf" />
+            <item index="2" class="java.lang.String" itemvalue="crispy-bootstrap5" />
+            <item index="3" class="java.lang.String" itemvalue="psycopg2-binary" />
+            <item index="4" class="java.lang.String" itemvalue="requests" />
+            <item index="5" class="java.lang.String" itemvalue="django-storages" />
+            <item index="6" class="java.lang.String" itemvalue="celery" />
+            <item index="7" class="java.lang.String" itemvalue="django-countries" />
+            <item index="8" class="java.lang.String" itemvalue="sentry-sdk" />
+            <item index="9" class="java.lang.String" itemvalue="django-cockroachdb" />
+            <item index="10" class="java.lang.String" itemvalue="django-phonenumber-field" />
+            <item index="11" class="java.lang.String" itemvalue="oscrypto" />
+            <item index="12" class="java.lang.String" itemvalue="djangorestframework" />
+            <item index="13" class="java.lang.String" itemvalue="retry" />
+            <item index="14" class="java.lang.String" itemvalue="uritemplate" />
+            <item index="15" class="java.lang.String" itemvalue="py-webauthn" />
+            <item index="16" class="java.lang.String" itemvalue="dnspython" />
+            <item index="17" class="java.lang.String" itemvalue="django-crispy-forms" />
+            <item index="18" class="java.lang.String" itemvalue="cryptography" />
+            <item index="19" class="java.lang.String" itemvalue="gunicorn" />
+            <item index="20" class="java.lang.String" itemvalue="boto3" />
+            <item index="21" class="java.lang.String" itemvalue="django-grpc" />
+            <item index="22" class="java.lang.String" itemvalue="mypy-protobuf" />
+            <item index="23" class="java.lang.String" itemvalue="Django" />
+            <item index="24" class="java.lang.String" itemvalue="grpcio" />
+            <item index="25" class="java.lang.String" itemvalue="google-api-python-client" />
+            <item index="26" class="java.lang.String" itemvalue="pika" />
+            <item index="27" class="java.lang.String" itemvalue="pytz" />
+            <item index="28" class="java.lang.String" itemvalue="pyjwt" />
+            <item index="29" class="java.lang.String" itemvalue="django-xff" />
+            <item index="30" class="java.lang.String" itemvalue="google-auth" />
+            <item index="31" class="java.lang.String" itemvalue="base32-crockford" />
+            <item index="32" class="java.lang.String" itemvalue="python-dotenv" />
+            <item index="33" class="java.lang.String" itemvalue="PyMuPDF" />
+            <item index="34" class="java.lang.String" itemvalue="BeautifulSoup4" />
+            <item index="35" class="java.lang.String" itemvalue="opencv-python" />
+            <item index="36" class="java.lang.String" itemvalue="python-ldap" />
+            <item index="37" class="java.lang.String" itemvalue="crispy-forms-gds" />
+            <item index="38" class="java.lang.String" itemvalue="asn1tools" />
+            <item index="39" class="java.lang.String" itemvalue="base26" />
+            <item index="40" class="java.lang.String" itemvalue="django-magiclink" />
+            <item index="41" class="java.lang.String" itemvalue="ber-tlv" />
+            <item index="42" class="java.lang.String" itemvalue="pycryptodome" />
+            <item index="43" class="java.lang.String" itemvalue="iso3166" />
+            <item index="44" class="java.lang.String" itemvalue="dacite" />
+            <item index="45" class="java.lang.String" itemvalue="Pillow" />
+            <item index="46" class="java.lang.String" itemvalue="base45" />
+            <item index="47" class="java.lang.String" itemvalue="phonenumbers" />
+            <item index="48" class="java.lang.String" itemvalue="icalendar" />
+            <item index="49" class="java.lang.String" itemvalue="bitstring" />
+            <item index="50" class="java.lang.String" itemvalue="numpy" />
+            <item index="51" class="java.lang.String" itemvalue="urllib3" />
+            <item index="52" class="java.lang.String" itemvalue="xsdata" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

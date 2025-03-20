@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="govuk-template">
+<head>
+    <meta charset="utf-8">
+    <title>Boycott IETF 127</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link href='{% static "govuk/govuk-frontend-5.6.0.min.css" %}' rel="stylesheet">
+    <link href='{% static "main/style.css" %}' rel="stylesheet">
+
+    <meta name="fediverse:creator" content="@q@glauca.space"/>
+</head>
+<body class="govuk-template__body">
+<script>
+    document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');
+</script>
+<header class="govuk-header" data-module="govuk-header">
+    <div class="govuk-header__container govuk-width-container">
+        <a href="{% url "index" %}" class="govuk-header__link govuk-header__service-name">
+            Boycott IETF 127
+        </a>
+    </div>
+</header>
+<main class="govuk-main-wrapper" id="content" role="main">
+    {% if messages %}
+        <div class="govuk-width-container">
+            {% for message in messages %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                    <div class="govuk-error-summary" data-module="govuk-error-summary">
+                        <div role="alert">
+                            <h2 class="govuk-error-summary__title">Error</h2>
+                            <div class="govuk-error-summary__body">
+                                {{ message.message }}
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="govuk-notification-banner govuk-notification-banner--{{ message.level_tag }}"
+                         role="region"
+                         data-module="govuk-notification-banner">
+                        <div class="govuk-notification-banner__content">
+                            {{ message.message }}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% endif %}
+    {% block content %}{% endblock content %}
+</main>
+<footer class="govuk-footer">
+    <div class="govuk-width-container">
+        <div class="govuk-footer__meta">
+            <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+                <div class="govuk-footer__meta-custom">
+                    For the avoidance of doubt, whilst I am employed by the Max-Planck Institute for Informatics,
+                    the contents of this page represent only my personal views, and not that of my employer.
+                </div>
+                <div class="govuk-footer__meta-custom">
+                    <a class="govuk-footer__link" href="https://github.com/alphagov/govuk-frontend" target="_blank">
+                        GOV.UK Design System
+                    </a> used under license.
+                </div>
+                <span class="govuk-footer__licence-description">
+                    Source code licensed under the
+                    <a href="https://eupl.eu" class="govuk-footer__link" target="_blank">EUPL v1.2</a>.
+                </span>
+            </div>
+            <div class="govuk-footer__meta-item">
+                <a class="govuk-footer__link govuk-footer__copyright-logo" href="https://magicalcodewit.ch">
+                    &copy; Q Misell, {% now "Y" %}
+                </a>
+            </div>
+        </div>
+    </div>
+    </div>
+</footer>
+<script type="module" src='{% static "govuk/govuk-frontend-5.6.0.min.js" %}'></script>
+<script type="module">
+    import {initAll} from '{% static "govuk/govuk-frontend-5.6.0.min.js" %}'
+
+    initAll()
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: boycott-ietf127-django
+  namespace: q-personal
+  labels:
+    app: boycott-ietf127
+    part: django
+spec:
+  selector:
+    app: boycott-ietf127
+    part: django
+  ports:
+    - port: 8000
+      targetPort: 8000
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: boycott-ietf127
+  namespace: q-personal
+  annotations:
+    cert-manager.io/cluster-issuer: "gts"
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - boycott-ietf127.org
+      secretName: boycott-ietf127-tls
+  rules:
+    - host: boycott-ietf127.org
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: boycott-ietf127
+                port:
+                  number: 8000

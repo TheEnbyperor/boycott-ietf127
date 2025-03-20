@@ -1,0 +1,17 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% block content %}
+    <div class="govuk-width-container">
+        <h1 class="govuk-heading-l">Verify your signature</h1>
+        <p class="govuk-body-lead">
+            Click the button below to verify your signature.
+        </p>
+        <form action="" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="verify" value="true">
+            <button type="submit" class="govuk-button govuk-button--start" data-module="govuk-button">
+                Verify signature
+            </button>
+        </form>
+    </div>
+{% endblock %}

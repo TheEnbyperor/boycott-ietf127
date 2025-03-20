@@ -1,0 +1,7 @@
+Hi,
+
+Thanks for signing your support for the IETF 127 boycott. Please verify your signature using the link below:
+
+{{ verify_link }}
+
+Remember to share around: https://boycott-ietf127.org
