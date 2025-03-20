@@ -36,6 +36,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: boycott-ietf127
+                name: boycott-ietf127-django
                 port:
                   number: 8000

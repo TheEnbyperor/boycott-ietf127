@@ -6,13 +6,13 @@ metadata:
 data:
   HOST: "boycott-ietf127.org"
   DJANGO_SETTINGS_MODULE: "boycott_ietf_127.settings"
-  EXTERNAL_URL: "https://boyctot-ietf127.org"
+  EXTERNAL_URL: "https://boycott-ietf127.org"
   DB_HOST: "cockroachdb.default"
   DB_NAME: "boycott_ietf127"
   S3_ENDPOINT: "https://s3.as207960.net"
   S3_REGION: "garage"
   S3_BUCKET: "boycott-ietf127-django"
-  S3_ACCESS_KEY_ID: "GKe590fc097b6708821324d31c"
+  S3_ACCESS_KEY_ID: "GKd6ed5aeb0ed864277cca4ed3"
   S3_CUSTOM_DOMAIN: "boycott-ietf127-django.content.as207960.net"
   STATIC_URL: "https://boycott-ietf127-django.content.as207960.net/"
   MEDIA_URL: "https://boycott-ietf127-django.content.as207960.net/"
@@ -63,7 +63,6 @@ spec:
           image: theenbyperor/boycott-ietf127:(version)
           imagePullPolicy: Always
           command: ["gunicorn", "-w", "4", "-b", "[::]:8000", "--forwarded-allow-ips", "*", "--access-logfile", "-", "--log-level=debug", "--timeout=90", "boycott_ietf_127.wsgi:application"]
-          volumeMounts: *volumeMounts
           ports:
             - containerPort: 8000
           envFrom: *envFrom
