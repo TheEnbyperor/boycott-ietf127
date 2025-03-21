@@ -4,15 +4,29 @@
     <div class="govuk-width-container">
         <img src="{% static "main/boycott-ietf-127.svg" %}" alt="" class="logo">
         <p class="govuk-body-lead">
+            They say:
+        </p>
+        <div class="govuk-inset-text">
+            <p class="govuk-body-lead govuk-!-text-align-centre">
+                <em>"... it would be inappropriate to make any change without clear evidence of a direct issue"</em>
+            </p>
+        </div>
+        <p class="govuk-body-lead">
+            However, the threat is real:
+        </p>
+        <ul class="govuk-list govuk-list--bullet govuk-body-lead">
+            <li><a href="https://www.whitehouse.gov/presidential-actions/2025/01/defending-women-from-gender-ideology-extremism-and-restoring-biological-truth-to-the-federal-government/">"Defending Women from Gender Ideology Extremism and restoring Biological Truth to the Federal Government"</a>
+            <br/>- Executive Order, January 20<sup>th</sup> 2025</li>
+            <li><a href="https://www.theguardian.com/us-news/2025/mar/19/trump-musk-french-scientist-detained">French scientist denied US entry after phone messages critical of Trump found</a>
+            <br/>- The Guardian, March 19<sup>th</sup> 2025</li>
+        </ul>
+        <p class="govuk-body-lead">
             The IETF Administration LLC has decided to continue to hold meetings in the US,
             in spite of significant threats to the safety of the community in traveling there.
             As an Internet community we strive to include everyone. Holding a meeting in the
             US is incompatible with our values.
             We call on the IETF community to refuse to travel to the 127<sup>th</sup> IETF meeting,
             to be held in San Francisco.
-        </p>
-        <p class="govuk-body-lead govuk-!-text-align-centre">
-            If the bar lets Nazis in, it's a Nazi bar.
         </p>
         <div class="govuk-grid-row govuk-!-text-align-centre">
             <div class="govuk-grid-column-one-third">
@@ -30,7 +44,7 @@
         </div>
         <p class="govuk-body">
             If you are unable to travel to the US, or wish to voice your support for this boycott,
-            fill in the form below.
+            fill in the form below - your signature can be anonymous.
         </p>
         <h2 class="govuk-heading-m">The US is dangerous</h2>
         <p class="govuk-body">
@@ -70,7 +84,7 @@
         </p>
         <p class="govuk-body">
             Beyond problems at the border, the current Secretary for Health and Human Services - Robert F. Kennedy Jr. -
-            has said that he will send those with ADHD to concentration camps. Source:
+            has said that he will send those with ADHD to camps. Source:
             <a href="https://futurism.com/neoscope/rfk-jr-adderall-labor-camps" class="govuk-link">Futurism</a>.<br/>
             Even if attendees get through the border, their safety during the meeting cannot be guaranteed.
         </p>
@@ -118,7 +132,8 @@
                             <p class="govuk-error-message">{{ error }}</p>
                         {% endfor %}
                     {% endif %}
-                    <input class="govuk-input" id="name" name="name" type="text" required {% if form.name.value %}value="{{ form.name.value }}"{% endif %}>
+                    <input class="govuk-input" id="name" name="name" type="text" required
+                           {% if form.name.value %}value="{{ form.name.value }}"{% endif %}>
                 </div>
                 <div class="govuk-form-group{% if form.affiliation.errors %} govuk-form-group--error{% endif %}">
                     <label class="govuk-label" for="affiliation">Affiliation (optional)</label>
@@ -127,7 +142,8 @@
                             <p class="govuk-error-message">{{ error }}</p>
                         {% endfor %}
                     {% endif %}
-                    <input class="govuk-input" id="affiliation" name="affiliation" type="text" {% if form.affiliation.value %}value="{{ form.affiliation.value }}"{% endif %}>
+                    <input class="govuk-input" id="affiliation" name="affiliation" type="text"
+                           {% if form.affiliation.value %}value="{{ form.affiliation.value }}"{% endif %}>
                 </div>
                 <div class="govuk-form-group{% if form.email.errors %} govuk-form-group--error{% endif %}">
                     <label class="govuk-label" for="email">Email (we'll send a link to verify your signature)</label>
@@ -136,7 +152,8 @@
                             <p class="govuk-error-message">{{ error }}</p>
                         {% endfor %}
                     {% endif %}
-                    <input class="govuk-input" id="email" name="email" type="email" required {% if form.email.value %}value="{{ form.email.value }}"{% endif %}>
+                    <input class="govuk-input" id="email" name="email" type="email" required
+                           {% if form.email.value %}value="{{ form.email.value }}"{% endif %}>
                 </div>
             </fieldset>
             <div class="govuk-form-group{% if form.situation.errors %} govuk-form-group--error{% endif %}">
