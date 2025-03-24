@@ -40,34 +40,45 @@ def index(request):
         form = forms.SignatureForm(request.POST)
 
         if form.is_valid():
-            form.save()
+            if models.Signature.objects.filter(email=form.cleaned_data["email"], validated=True).count():
+                messages.error(request, "You have already signed using this email.")
+            else:
+                instance, _ = models.Signature.objects.update_or_create(
+                    email=form.cleaned_data["email"],
+                    defaults={
+                        "name": form.cleaned_data["name"],
+                        "affiliation": form.cleaned_data["affiliation"],
+                        "situation": form.cleaned_data["situation"],
+                        "public": form.cleaned_data["public"],
+                    }
+                )
 
-            verify_link = settings.EXTERNAL_URL_BASE + reverse("verify_signature", kwargs={
-                "token": form.instance.token,
-            })
-            text_content = render_to_string(
-                "email/verify.txt",
-                context={
-                    "verify_link": verify_link
-                },
-            )
-            html_content = render_to_string(
-                "email/verify.html",
-                context={
-                    "verify_link": verify_link,
-                },
-            )
-            msg = EmailMultiAlternatives(
-                "Verify your signature",
-                text_content,
-                None,
-                [form.cleaned_data["email"]]
-            )
-            msg.attach_alternative(html_content, "text/html")
-            msg.send()
+                verify_link = settings.EXTERNAL_URL_BASE + reverse("verify_signature", kwargs={
+                    "token": instance.token,
+                })
+                text_content = render_to_string(
+                    "email/verify.txt",
+                    context={
+                        "verify_link": verify_link
+                    },
+                )
+                html_content = render_to_string(
+                    "email/verify.html",
+                    context={
+                        "verify_link": verify_link,
+                    },
+                )
+                msg = EmailMultiAlternatives(
+                    "Verify your signature",
+                    text_content,
+                    None,
+                    [form.cleaned_data["email"]]
+                )
+                msg.attach_alternative(html_content, "text/html")
+                msg.send()
 
-            messages.success(request, "We've sent you an email to verify your signature.")
-            form = forms.SignatureForm()
+                messages.success(request, "We've sent you an email to verify your signature.")
+                form = forms.SignatureForm()
     else:
         form = forms.SignatureForm()
 
